@@ -29,15 +29,11 @@ app.layout = html.Div(children=[
     html.H1('Pokemon Data'),
     html.Div([
         html.Div([
-                html.H6('Select a variable for analysis:'),
-                dcc.Dropdown(
-                    id='options-drop',
-                    options=[{'label': i, 'value': i} for i in list_of_columns],
-                    value='Water'
-                ),
-        ]),
-        html.Div([dcc.Graph(id='figure-1'),
-            ]),
+            dcc.Tabs(id='tabs' value='tab1', children=[
+                dcc.Tab(label='Analysis 1', value='tab1'),
+                dcc.Tab(label='Analysis 2', value='tab2')
+            ])
+            html.Div(id='tab_content'),
     ]),
     html.A('Code on Github', href=githublink),
     html.Br(),
@@ -71,6 +67,25 @@ def make_figure(varname):
     fig = go.Figure(data=barchart, layout=chart_layout)
     return fig
 
+@app.callback(Output('tab_content', 'children'),
+              [Input('tabs', 'value')])
+def render_tabs(tab):
+    if tab == 'tab1':
+     return html.Div([
+        html.H6('Select a variable for analysis:'),
+        dcc.Dropdown(
+            id='options-drop',
+            options=[{'label': i, 'value': i} for i in list_of_columns],
+            value='Water'
+        ),
+        html.Div([dcc.Graph(id='figure-1')]),
+     ])
+    elif tab == 'tab2':
+        return html.Div([
+            html.H6('Tab 2'),
+        ])
+        
+    
 
 ############ Deploy
 if __name__ == '__main__':
