@@ -72,15 +72,15 @@ def make_figure(varname):
               [Input('tabs', 'value')])
 def render_tabs(tab):
     if tab == 'tab1':
-     return html.Div([
-        html.H6('Select a variable for analysis:'),
-        dcc.Dropdown(
-            id='options-drop',
-            options=[{'label': i, 'value': i} for i in list_of_columns],
-            value='Water'
-        ),
-        html.Div([dcc.Graph(id='figure-1')]),
-     ])
+        return html.Div([
+            html.H6('Select a variable for analysis:'),
+            dcc.Dropdown(
+                id='options-drop',
+                options=[{'label': i, 'value': i} for i in list_of_columns],
+                value='Water'
+            ),
+            html.Div([dcc.Graph(id='figure-1')]),
+         ])
     elif tab == 'tab2':
         return html.Div([
             html.H6('Tab 2'),
