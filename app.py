@@ -29,16 +29,17 @@ app.layout = html.Div(children=[
     html.H1('Pokemon Data'),
     html.Div([
         html.Div([
-            dcc.Tabs(id='tabs' value='tab1', children=[
+            dcc.Tabs(id='tabs', value='tab1', children=[
                 dcc.Tab(label='Analysis 1', value='tab1'),
                 dcc.Tab(label='Analysis 2', value='tab2')
-            ])
+            ]),
             html.Div(id='tab_content'),
     ]),
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
-    ]
+    ])
+]
 )
 
 
