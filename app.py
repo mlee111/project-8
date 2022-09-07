@@ -82,8 +82,47 @@ def render_tabs(tab):
             html.Div([dcc.Graph(id='figure-1')]),
          ])
     elif tab == 'tab2':
+        scatter1 = go.Scatter(
+            x = df[df['Generation'] < 4]['Attack'],
+            y = df[df['Generation'] < 4]['Defense'],
+            mode='markers',
+            text=df.Name,
+            marker=dict(
+                color=df['Generation'],
+            ),
+            hoverinfo='text',
+        )
+        layout = go.Layout(
+            title='Pokemon Atk vs Def [Gen 1-3]',
+            xaxis_title='Attack',
+            yaxis_title='Defense',
+
+        )
+        
+        first_gen_scatter = go.Figure(data=scatter1, layout=layout);
+        
+        scatter2 = go.Scatter(
+            x = df[df['Generation'] >= 4]['Attack'],
+            y = df[df['Generation'] >= 4]['Defense'],
+            mode='markers',
+            text=df.Name,
+            marker=dict(
+                color=df['Generation'],
+            ),
+            hoverinfo='text',
+        )
+        layout2 = go.Layout(
+            title='Pokemon Atk vs Def [Gen 1-3]',
+            xaxis_title='Attack',
+            yaxis_title='Defense',
+
+        )
+        last_gen_scatter = go.Figure(data=scatter2, layout=layout2);
         return html.Div([
-            html.H6('Tab 2'),
+            html.H6('Attack + Defense Stats Gen 1-3'),
+            html.Div([dcc.Graph(id='figure-2', figure=first_gen_scatter)]),
+            html.H6('Attack + Defense Stats Gen 1-3'),
+            html.Div([dcc.Graph(id='figure-3', figure=last_gen_scatter)]),
         ])
         
     
