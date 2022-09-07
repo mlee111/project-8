@@ -9,7 +9,7 @@ import pandas as pd
 
 tabtitle = 'Pokedex'
 sourceurl = 'https://www.kaggle.com/datasets/abcsds/pokemon'
-githublink = 'https://github.com/mlee111/306-agriculture-exports-dropdown'
+githublink = 'https://github.com/mlee111/project-8'
 # here's the list of possible columns to choose from.
 
 
